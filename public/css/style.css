@@ -1,0 +1,67 @@
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.homePage {
+  height: 100%;
+  background-color:#01bea8;
+
+}
+
+.homeImg {
+  width: 80%;
+}
+
+.homeMenu {
+  width: 80%;
+}
+
+.loginPage {
+  background-color: #01bea8;
+  color: black;
+  font-weight: bold;
+}
+
+.linksPage {
+  background-color: #01bea8;
+}
+
+.linksPlayernames {
+  color : black;
+  font-size : 14px;
+  font-weight: bold;
+}
+
+
+.registerPage {
+  background-color: #01bea8;
+  color: black;
+  font-weight: bold;
+}
+
+.invitationPage {
+  background-color: #01bea8;
+}
+
+.linksPage {
+  background-color: #01bea8;
+}
+
+.linksPlayernames {
+  color : black;
+  font-size : 14px;
+  font-weight: bold;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  font-size: 1rem;
+  text-align: center;
+}
+

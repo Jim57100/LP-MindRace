@@ -1,0 +1,55 @@
+{% extends "baseAdmin.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<div class="container-fluid h-100 admin pt-5">
+  <table class="table table-striped ">
+    <thead>
+      <tr class="text-center">
+        <th>IDENTIFIANT</th>
+        <th>EMAIL</th>
+        <th>ROLES</th>
+        <th>PRENOM</th>
+        <th>NOM</th>
+        <th>MODIFIER</th>
+        <th>SUPPRIMER</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for users in user %}
+      <form method="post">
+        <tr class="text-center">
+          <td>{{ users.username }}</td>
+          <td> {{ users.mail }}</td>
+          <td>{{ users.roles }}</td>
+          <td>{{ users.firstName }}</td>
+          <td>{{ users.lastName}} </td>
+          <td>
+            <button class="btn btn-success" name="btn" value="update"> <i class='far fa-edit'></i></button> </td>
+          <td>
+            <button class="btn btn-danger" name="btn" value="delete"> <i class='fas fa-trash-alt'></i></button>
+            <input type="hidden" id="postId" name="postId" value="{{ users.id }}">
+          </td>
+      </form>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if page > 1 %}
+  <nav class="text-center d-flex justify-content-center">
+    <ul class="pagination">
+      {% for pages in 1..page %}
+      <form method="post">
+        <li class="page-item">
+          <input type="submit" name="pagination" class="page-link" value="{{ pages }}">
+          <input type="hidden" id="postId" name="postId" value="{{ pages }}">
+        </li>
+      </form>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+
+
+{% endblock %}

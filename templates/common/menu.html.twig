@@ -1,0 +1,51 @@
+{% extends "baseAdmin.html.twig" %}
+
+{% block navbar %}
+<div class="p-3" style="height:10%">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/admin">Accueil</a>
+          </li>
+          {% if not app.user %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Se connecter</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/">Déconnexion</a>
+          </li>
+          {% endif %}
+
+          {% if is_granted('ROLE_ADMIN') %}
+          <a class="navbar-brand" style="height : 10%" href="/admin">
+            <img src="/images/tortle.png" alt="" height="24" class="d-inline-block align-text-top">
+            ADMINISTRATION
+          </a>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Joueurs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Questions</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+{% endblock %}
+{# <div style="height:90%"> #}
+{% block body %}
+{% endblock %}
+{# </div> #}

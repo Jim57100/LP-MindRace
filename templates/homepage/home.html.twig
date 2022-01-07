@@ -1,0 +1,33 @@
+{% extends "baseGame.html.twig" %}
+
+{% block body %}
+<div class="container-fluid homepage d-flex justify-content-center align-items-center">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 align-self-end text-center mb-3">
+      <img src="./images/tortle.png" style="width:80%;padding-bottom:10px;"></img>
+    </div>
+
+    <div class=" col-sm-5 col-md-6 align-self-center mb-3">
+
+      <div class="row col text-center">
+        <img src="./images/titre.png" />
+      </div>
+
+      <div class="row col p-3">
+        <a style="background-color : #3563e1;font-weight:bold; font-size:20px;" class="btn rounded-pill p-3"
+          href='/register'>
+          Create an account</a>
+      </div>
+      <div class="row col p-3">
+        <a style="background-color : #3563e1; font-weight:bold; font-size:20px;" class="btn rounded-pill p-3"
+          href='/login'>
+          Log In</a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

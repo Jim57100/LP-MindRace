@@ -1,0 +1,61 @@
+{% extends "baseAdmin.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<div class="container-fluid h-100 admin pt-3">
+  <table class="container table table-striped ">
+    <thead>
+      <tr class="text-center">
+        <th>LIBELLE</th>
+        <th>NIVEAU</th>
+        <th>ND DE REPONSES</th>
+        <th>REPONSES VALIDES</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for questions in question %}
+      <form method="post">
+        <tr class="text-center">
+          <td> {{ questions.label }}</td>
+          <td>{{ questions.level }}</td>
+          <td>{{ questions.answers }}</td>
+          {% for answers in answer %}
+          {% if questions.id == answers.id_question %}
+          {% if answers.valid == 1 %}
+          <td>
+            {{ answers.label }}
+          </td>
+          <td>
+            <button class="btn btn-success" name="btn" value="update"> <i class='far fa-edit'></i></button> </td>
+          <td>
+            <button class="btn btn-danger" name="btn" value="delete"> <i class='fas fa-trash-alt'></i></button>
+            <input type="hidden" id="postId" name="postId" value="{{ questions.id }}">
+          </td>
+      </form>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+{% if page > 1 %}
+  <nav class="text-center d-flex justify-content-center">
+    <ul class="pagination">
+      {% for pages in 1..page %}
+      <form method="post">
+        <li class="page-item m-1">
+          <input type="submit" name="pagination" class="page-link" value="{{ pages }}">
+          <input type="hidden" id="postId" name="postId" value="{{ pages }}">
+        </li>
+      </form>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}
+
+
+</div>
+{% endblock %}

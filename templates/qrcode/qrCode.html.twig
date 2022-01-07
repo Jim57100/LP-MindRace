@@ -1,0 +1,79 @@
+{% extends 'baseGame.html.twig' %}
+
+{% block title %}Links{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid h-100 linksPage d-flex align-items-center">
+  <div class="container pt-2">
+
+    <h2><strong>{{ pageTitle }}</strong></h2>
+    <br />
+    <br />
+    <h3>1. Démarrer le server du jeu</h3>
+    <br />
+    <br />
+    <div class="row ">
+      <h3>2. Envoyer à vos amis un lien de connexion !</h3>
+      <div class="col-sm-12 col-md-6">
+        <form method="post">
+          <div class="card mb-3" id="user-card">
+            {% for i in 0 .. nbPlayers %}
+            <div class="d-flex m-3 justify-content-center align-items-center">
+              <div class="col-2 text-center">
+                <p class="linksPlayernames">{{ player[i] }}</p>
+              </div>
+              <div class="col-2">
+                {% if ( color[i] == 'black') %}
+                <img src="./images/tortleblack.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'blue') %}
+                <img src="./images/tortleBlue.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'green') %}
+                <img src="./images/tortleGreen.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'orange') %}
+                <img src="./images/tortleOrange.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'pink') %}
+                <img src="./images/tortlePink.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'purple') %}
+                <img src="./images/tortlePurple.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'red') %}
+                <img src="./images/tortleRed.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'turquoise') %}
+                <img src="./images/tortleTurquoise.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'white') %}
+                <img src="./images/tortleWhite.png" class="h-25 img-fluid p-3">
+                {% elseif ( color[i]  == 'yellow') %}
+                <img src="./images/tortleYellow.png" class="h-25 img-fluid p-3">
+                {% endif %}
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <button type="submit" class="btn btn-info" name="btn" value={{ i }} id="mail">Envoyer un mail</button>
+                <span>ou</spanc>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <button type="submit" class="btn btn-info" name="qrcode" value={{ i }} id="qr">Afficher QR Code</button>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-12 col-md-6 bg-white rounded mb-3 d-flex justify-content-center align-items-center">
+        <img src={{ image }}>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+      <h3>3. Démarrez la partie avant que les joueurs se connectent</h3>
+      <div class="col-12">
+        <div class="d-grid gap-2 mb-3">
+          <button class="btn btn-warning btn-lg" id="btnSaloon" onclick="location.href='{{tableUrl}}'"><em><strong>Start Game</strong></em></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

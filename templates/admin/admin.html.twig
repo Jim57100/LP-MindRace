@@ -1,0 +1,38 @@
+{% extends "baseAdmin.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block navbar %}{% endblock %}
+
+{% block body %}
+<div class="container-fluid h-100 admin">
+    <div class="row text-center justify-content-around p-4" style="height:90%">
+        <div class="col-sm-5 align-self-center h-50 border rounded-3 bg-light countPlayers mb-4">
+            <div class="d-flex h-100 justify-content-center align-items-center">
+                <div class="row align-self-center ">
+                    <h2> PLAYERS </h2>
+                    <p class="mt-4"> Number of players : {{ liste_user }} </p>
+                    <div class="form-group justify-content-center align-items-center">
+                        <button type="submit" style="background-color : #01bea8;" class="btn rounded-pill "
+                            name="list_player" onclick=window.location.href='/admin/players'>
+                            Go to the list <i class="fas fa-long-arrow-alt-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 align-self-center h-50 border rounded-3 bg-light countQuestions mb-4">
+            <div class="d-flex h-100 justify-content-center align-items-center">
+                <div class="row align-self-center">
+                    <h2> QUESTIONS </h2>
+                    <p class="mt-4"> Number of questions : {{ liste_question }} </p>
+                    <div class="form-group justify-content-center align-items-center">
+                        <button type="submit" style="background-color : #01bea8;" class="btn rounded-pill "
+                            name="list_questions" onclick=window.location.href='/admin/questions'>
+                            Go to the list <i class="fas fa-long-arrow-alt-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

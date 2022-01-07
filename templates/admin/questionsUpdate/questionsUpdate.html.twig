@@ -1,0 +1,55 @@
+{% extends "baseAdmin.html.twig" %}
+
+
+{% block body %}
+
+
+
+<div class=" container ">
+  <form method="post">
+    <div class="text-end p-3">
+      {# <button class="btn btn-danger" name="btn" value="delete"> Update </button> #}
+      <button class="btn btn-danger" name="btn" value="delete"> <i class='fas fa-trash-alt'></i> </button>
+    </div>
+    <h2 class="p-4 text-center"> Update Question {{ id }} </h2>
+
+    <div class="form-group row justify-content-center">
+      <label class="col-sm-2 col-form-label"> <u> Actual question :</u> {{ qst.label }}</label>
+      <div class="col-sm-1 col-form-label text-end"> <i class="fas fa-long-arrow-alt-right"></i> </div>
+      <div class="col-sm-6 col-form-label">
+        <input type="text" class="form-control " name="label">
+      </div>
+    </div>
+    <div class="form-group row justify-content-center">
+      <label class="col-sm-2 col-form-label"> <u> Actual level :</u> {{ qst.level }} </label>
+      <div class="col-sm-1 col-form-label text-end"> <i class="fas fa-long-arrow-alt-right"></i> </div>
+      <div class="col-sm-6">
+        <select name="level" class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+    </div>
+    <h2 class="text-center p-4"> Update his answers </h2>
+    {% for i in answers %}
+    <div class="form-group row justify-content-center">
+      <label class="col-sm-2 col-form-label"> <u> Answer :</u>
+        {{ i.label }} <br>{% if (i.valid)==1 %} (This answer is the right answer) {% endif %} </label>
+      <div class="col-sm-1 col-form-label text-end"> <i class="fas fa-long-arrow-alt-right"></i> </div>
+      <div class="col-sm-6 col-form-label">
+        <input type="text" class="form-control " name={{ i.id  }}>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="pt-3 text-center">
+      <button class="btn btn-success" name="btn" value="update"> Update </button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+

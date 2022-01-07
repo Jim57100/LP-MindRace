@@ -1,0 +1,323 @@
+{% extends 'baseGame.html.twig' %}
+
+{% block title %}Invitation{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid h-100 invitationPage">
+  <div class="row pt-5">
+    <div class="col text-center">
+      <h1 class="text-white">Invitations</h1>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center align-items-center m-5">
+    <div class="col-12">
+      <form method="post" accept-charset="UTF-8" class="form-control">
+
+        <div class="row d-flex align-items-center m-1 p-1">
+          <div class="col-2 text-center">
+            <label for="player1">Joueur 1</label>
+          </div>
+          <div class="col-7">
+            <div class="form-group">
+              <input type="text" name="players[]" id="player1" class="form-control playername" placeholder="Pseudo du joueur 1"
+                onkeyup="javascript:load_data(this.value, 0)">
+            </div>
+            <span class="search_result"></span>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown">
+                  Choose your tortle
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="selectTortle0" name="selectT">
+                  <li class="dropdown-item">
+                    <img src="./images/tortleblack.png" width="100" height="auto" id="black" name="blackT"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleBlue.png" width="100" height="auto" id="blue"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleGreen.png" width="100" height="auto" id="green"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleOrange.png" width="100" height="auto" id="orange"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePink.png" width="100" height="auto" id="pink"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePurple.png" width="100" height="auto" id="purple"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleRed.png" width="100" height="auto" id="red"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleTurquoise.png" width="100" height="auto" id="turquoise"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleWhite.png" width="100" height="auto" id="white"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleYellow.png" width="100" height="auto" id="yellow"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="x1" class="col-1">
+            <input type="hidden" id="color1" name="color[]" value="" >
+          </div>
+        </div>
+        <div class="row d-flex align-items-center m-1 p-1">
+          <div class="col-2 text-center">
+            <label for="player2">Joueur 2</label>
+          </div>
+          <div class="col-7">
+            <div class="form-group">
+              <input type="text" name="players[]" id="player2" class="form-control playername" placeholder="Pseudo du joueur 2"
+                onkeyup="javascript:load_data(this.value, 1)">
+            </div>
+            <span class="search_result"></span>
+          </div>
+          <div class="col-2">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown">
+                Choose your tortle
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="selectTortle1" name="selectT">
+                <li class="dropdown-item">
+                    <img src="./images/tortleblack.png" width="100" height="auto" id="black" name="blackT"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleBlue.png" width="100" height="auto" id="blue"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleGreen.png" width="100" height="auto" id="green"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleOrange.png" width="100" height="auto" id="orange"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePink.png" width="100" height="auto" id="pink"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePurple.png" width="100" height="auto" id="purple"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleRed.png" width="100" height="auto" id="red"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleTurquoise.png" width="100" height="auto" id="turquoise"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleWhite.png" width="100" height="auto" id="white"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleYellow.png" width="100" height="auto" id="yellow"></li>
+                </ul>
+            </div>
+          </div>
+          <div id="x2" class="col-1">
+          <input type="hidden" id="color2" name="color[]" value="">
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center m-1 p-1">
+          <div class="col-2 text-center">
+            <label for="player3">Joueur 3</label>
+          </div>
+          <div class="col-7">
+            <div class="form-group">
+              <input type="text" name="players[]" id="player3" class="form-control playername" placeholder="Pseudo du joueur 3"
+                onkeyup="javascript:load_data(this.value, 2)">
+            </div>
+            <span class="search_result"></span>
+          </div>
+          <div class="col-2">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown">
+                Choose your tortle
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="selectTortle2" name="selectT">
+               <li class="dropdown-item">
+                    <img src="./images/tortleblack.png" width="100" height="auto" id="black" name="blackT"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleBlue.png" width="100" height="auto" id="blue"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleGreen.png" width="100" height="auto" id="green"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleOrange.png" width="100" height="auto" id="orange"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePink.png" width="100" height="auto" id="pink"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePurple.png" width="100" height="auto" id="purple"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleRed.png" width="100" height="auto" id="red"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleTurquoise.png" width="100" height="auto" id="turquoise"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleWhite.png" width="100" height="auto" id="white"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleYellow.png" width="100" height="auto" id="yellow"></li>
+                 </ul>
+            </div>
+          </div>
+          <div id="x3" class="col-1">
+            <input type="hidden" id="color3" name="color[]" value="">
+          </div>
+        </div>
+        <div class="row d-flex align-items-center m-1 p-1">
+          <div class="col-2 text-center">
+            <label for="player3">Joueur 4</label>
+          </div>
+          <div class="col-7">
+            <div class="form-group">
+              <input type="text" name="players[]" id="player4" class="form-control playername" placeholder="Pseudo du joueur 4"
+                onkeyup="javascript:load_data(this.value, 3)">
+            </div>
+            <span class="search_result"></span>
+          </div>
+          <div class="col-2">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown">
+                Choose your tortle
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="selectTortle3" name="selectT">
+                <li class="dropdown-item">
+                    <img src="./images/tortleblack.png" width="100" height="auto" id="black" name="blackT"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleBlue.png" width="100" height="auto" id="blue"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleGreen.png" width="100" height="auto" id="green"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleOrange.png" width="100" height="auto" id="orange"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePink.png" width="100" height="auto" id="pink"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePurple.png" width="100" height="auto" id="purple"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleRed.png" width="100" height="auto" id="red"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleTurquoise.png" width="100" height="auto" id="turquoise"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleWhite.png" width="100" height="auto" id="white"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleYellow.png" width="100" height="auto" id="yellow"></li>
+                 </ul>
+            </div>
+          </div>
+          <div id="x4" class="col-1">
+            <input type="hidden" id="color4" name="color[]" value="">
+          </div>
+        </div>
+
+
+
+          <div class="row d-flex align-items-center m-1 p-1">
+            <div class="col-2 text-center">
+              <label for="player5">Joueur 5</label>
+            </div>
+            <div class="col-7">
+              <div class="form-group">
+               <input type="text" name="players[]" id="player5" class="form-control playername" placeholder="Pseudo du joueur 5"
+                onkeyup="javascript:load_data(this.value, 4)">
+              </div>
+              <span class="search_result"></span>
+            </div>
+            <div class="col-2">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown">
+                  Choose your tortle
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="selectTortle4" name="selectT">
+                <li class="dropdown-item">
+                    <img src="./images/tortleblack.png" width="100" height="auto" id="black" name="blackT"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleBlue.png" width="100" height="auto" id="blue"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleGreen.png" width="100" height="auto" id="green"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleOrange.png" width="100" height="auto" id="orange"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePink.png" width="100" height="auto" id="pink"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePurple.png" width="100" height="auto" id="purple"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleRed.png" width="100" height="auto" id="red"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleTurquoise.png" width="100" height="auto" id="turquoise"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleWhite.png" width="100" height="auto" id="white"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleYellow.png" width="100" height="auto" id="yellow"></li>
+                </ul>
+              </div>
+            </div>
+            <div id="x5" class="col-1">
+              <input type="hidden" id="color5" name="color[]" value="">
+            </div>
+
+          </div>
+
+          
+        <div class="row d-flex align-items-center m-1 p-1">
+          <div class="col-2 text-center">
+            <label for="player6">Joueur 6</label>
+          </div>
+          <div class="col-7">
+            <div class="form-group">
+              <input type="text" name="players[]" id="player6" class="form-control playername" placeholder="Pseudo du joueur 6"
+                onkeyup="javascript:load_data(this.value, 5)">
+           </div>
+            <span class="search_result"></span>
+          </div>
+          <div class="col-2">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown">
+                Choose your tortle
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="selectTortle5" name="selectT">
+               <li class="dropdown-item">
+                    <img src="./images/tortleblack.png" width="100" height="auto" id="black" name="blackT"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleBlue.png" width="100" height="auto" id="blue"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleGreen.png" width="100" height="auto" id="green"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleOrange.png" width="100" height="auto" id="orange"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePink.png" width="100" height="auto" id="pink"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortlePurple.png" width="100" height="auto" id="purple"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleRed.png" width="100" height="auto" id="red"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleTurquoise.png" width="100" height="auto" id="turquoise"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleWhite.png" width="100" height="auto" id="white"></li>
+                  <li class="dropdown-item">
+                    <img src="./images/tortleYellow.png" width="100" height="auto" id="yellow"></li>
+                 </ul>
+            </div>
+          </div>
+          <div id="x6" class="col-1">
+            <input type="hidden" id="color6" name="color[]" value="">
+          </div>
+        </div>
+      
+
+        <div class="row pt-4">
+          <div class="col-2"></div>
+          <div class="col-8 text-center d-grid gap-2 text-center">
+            <input type="submit" name='submit' value="Inviter" class="btn btn-primary mx-2">
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block bottom_js %}
+<script src="js/script.js"></script>
+{# Js, Jquery, Popper et bootstrap js pour liste déroulante #}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+{% endblock %}
+

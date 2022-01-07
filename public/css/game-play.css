@@ -1,0 +1,207 @@
+.play-step-start {
+    background-color: yellow;
+    border: 1px solid #DDDDDD;
+}
+.play-steps {
+    border: 1px solid #DDDDDD;
+    border-radius: 50%;
+}
+.play-step-finish {
+    background-color: green;
+    border: 1px solid #DDDDDD;
+}
+.player-information {
+    margin-bottom: 10px;
+}
+.player-steps-wrapper .player-step {
+    color: grey;
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+    min-width: 36px;
+    min-height: 36px;
+    text-align: center;
+}
+.player-steps-wrapper .player-step .player-pawn {
+    height: 24px;
+    display: inline-flex;
+}
+.question-container {
+    margin-bottom: 30px;
+}
+
+.icon-text {
+    font-size: 12px;
+}
+
+.difficulty-box-wrapper {
+    display: block;
+    width: 80%;
+    margin: 25px auto;
+    clear: both;
+}
+
+.difficulty-box {
+    display: inline-block;
+    width: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 10px;
+    font-weight: 800;
+    font-size: 40px;
+    text-align: center;
+    border: 1px solid #AAAAAA;
+    cursor: pointer;
+    color: #EEEEEE;
+    border-radius: 20px;
+    box-shadow: 2px 1px 2px #AAAAAA;
+}
+
+.difficulty-box.level-1 {
+    background-color: #2e7f18c4;
+}
+.difficulty-box.level-2 {
+    background-color: #dcdf37d2;
+}
+.difficulty-box.level-3 {
+    background-color: #5861dad3;
+}
+.difficulty-box.level-4 {
+    background-color: #df825dc7;
+}
+.difficulty-box.level-5 {
+    background-color: #b13333ce;
+}
+.difficulty-box.level-6 {
+    background-color: #444343d2;
+}
+.difficulty-box.selected {
+    color: #E2BE1D;
+}
+
+.answer-label {
+    list-style: none;
+}
+.answer-label a {
+    text-decoration: none;
+    color: #888;
+}
+
+.winner-result, .new-games-links {
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.winner-result .player-pawn, .player-pawn-image {
+    height: 24px;
+    display: inline-flex;
+}
+
+.blinking {
+    -webkit-animation: 1s blink ease infinite;
+    -moz-animation: 1s blink ease infinite;
+    -ms-animation: 1s blink ease infinite;
+    -o-animation: 1s blink ease infinite;
+    animation: 1s blink ease infinite;
+    
+}
+
+@keyframes blink {
+    from, to {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes blink {
+    from, to {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes blink {
+    from, to {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes blink {
+    from, to {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes blink {
+    from, to {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+.player-information-mini {
+    display: none;
+}
+.player-information-mini .not-ready-warning {
+    margin-bottom: 10px;
+}
+.player-mini-info-pawn {
+    margin-top: 10px;
+    height: 24px;
+}
+.player-information-mini .player-status-mini {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.player-information-mini .current-turn-statement {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.player-mini-status-step-box {
+    color: grey;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 1px solid #DDDDDD;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    min-width: 36px;
+    min-height: 36px;
+    text-align: center;
+    font-size: 24px;
+}
+
+@media only screen and (max-width: 600px) {
+    .difficulty-box {
+        width: 50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 5px;
+        font-weight: 800;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+    .player-information-wrapper {
+        display: none;
+    }
+    .player-information-mini {
+        display: block;
+    }
+
+    .player-mini-info-pawn {
+        height: 36px;
+    }
+}

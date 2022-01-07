@@ -1,0 +1,5 @@
+vendor
+# config/*.local.php
+.idea
+node_modules
+package-lock.json

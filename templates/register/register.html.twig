@@ -1,0 +1,40 @@
+{% extends "baseGame.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row text-center justify-content-center h-100 registerPage">
+        <div class="col-sm-4 align-self-center">
+            <div class="pb-5 row justify-content-center align-items-center">
+                {% block content %} <img style="width:70%" src="./images/tortle.png" />{% endblock %}
+            </div>
+            <p> Déjà inscrit ? <a href="/login" class="text-white"> Connectez-vous ! </a> </p>
+            <form method="post">
+                <div class="form-group row justify-content-center align-items-center p-2 ">
+                    <input type="text" class="form-control " name="username" placeholder="Username">
+                </div>
+                <div class="form-group row justify-content-center align-items-center p-2 ">
+                    <input type="text" class="form-control " name="mail" placeholder="Email">
+                </div>
+                <div class="form-group row justify-content-center align-items-center p-2 ">
+                    <input type="password" class="form-control " name="password" placeholder="Password">
+                </div>
+                <div class="form-group row justify-content-center align-items-center p-2 ">
+                    <input type="password" class="form-control " name="confirm_password" placeholder="Confirm Password">
+                </div>
+                <div class="form-group row justify-content-center align-items-center p-2 ">
+                    <input type="text" class="form-control " name="firstName" placeholder="Firstname">
+                </div>
+                <div class="form-group row justify-content-center align-items-center p-2">
+                    <input type="text" class="form-control " name="lastName" placeholder="Lastname">
+                </div>
+
+                <div class="row justify-content-center align-items-center p-3">
+                    <button type="submit" name="submit" style="background-color : #3563e1;" class="btn btn-primary"
+                        name="register_submit">S'enregistrer</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

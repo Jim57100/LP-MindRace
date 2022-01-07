@@ -1,0 +1,30 @@
+{% extends "baseGame.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row h-100"
+    style="background-color:#01bea8;background-image:url('./images/bg2.png');background-size: 80%; background-repeat: no-repeat;">
+
+    <div class="col-sm-12 col-md-7"></div>
+
+    <div class="col-sm-12 col-md-4 align-self-center">
+      <div class="row justify-content-center align-items-center">
+        <img src="./images/titre.png" />
+      </div>
+      <div class="row justify-content-center align-items-center p-3">
+        <h5 class="text-center text-white">Bonjour Administrateur ! Que voulez-vous faire ?</h5>
+      </div>
+      <div class="row justify-content-center align-items-center p-3">
+        <a style="background-color : #3563e1;font-weight:bold; font-size:20px;" class="btn rounded-pill p-3"
+          href='/admin'>
+          Administration</a>
+      </div>
+      <div class="row justify-content-center align-items-center p-3">
+        <a style="background-color : #3563e1; font-weight:bold; font-size:20px;" class="btn rounded-pill p-3"
+          href='/invitation'>
+          Jouer</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

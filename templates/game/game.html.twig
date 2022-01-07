@@ -1,0 +1,153 @@
+{% extends "baseGame.html.twig" %}
+{% block title %}Game{% endblock %}
+{% block css %}
+{{ parent() }}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/css/game-play.css" />
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid pt-5" id="game-container">
+  <div class="game">
+    <div class="row">
+      <div class="col-md-3 col-12">
+        <!-- card Question -->
+        <div class="card question-container">
+          <div class="card-header">
+            Voici la question :
+          </div>
+          <div class="card-body">
+            <p class="card-text" v-if="selectedDifficulty"><strong>Selected Difficulty</strong>: ${selectedDifficulty}
+            </p>
+            <p class="card-text"><strong>Question</strong>: ${questionSet.label}</p>
+          </div>
+        </div>
+        <!-- card for master only -->
+        <div class="card" v-if="questionSet.answers && questionSet.answers.length > 0">
+          <div class="card-header">Réponses possibles :</div>
+          <div class="card-body">
+            <ul v-if="!questionSet.needVerification || table.isManager">
+              <li v-for="answer in questionSet.answers" class="answer-label">
+                <a href="javascript:;" v-on:click="selectAnswer(answer.id)" v-bind:class="replyAnswerClass(answer)">
+                  ${answer.label}
+                </a>
+              </li>
+            </ul>
+            <span class="text-warning" v-if="questionSet.needVerification && !table.isManager">Waiting for game master
+              to answer of question.</span>
+          </div>
+          <div class="card-footer" v-if="table.isManager && questionSet.needVerification && playerStep == 2">
+            Le joueur a t'il bien répondu ?
+            <button class="btn btn-success btn-pill" v-on:click="setAnswerVerification(true)">Oui</button>
+            <button class="btn btn-danger btn-pill" v-on:click="setAnswerVerification(false)">Non</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-12">
+        <div class="player-information-wrapper">
+          <div class="row" v-for="player in table.players">
+            <div class="col-md-12 player-information">
+              <component-player-status v-bind:player="player"></component-player-status>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <component-difficulty-selector v-if="(isMyTurn || table.isManager) && playerStep == 1">
+  </component-difficulty-selector>
+  <component-winner-result v-if="gameResult && gameResult.length > 0" v-bind:players="gameResult"
+    v-bind:current-player="currentPlayer"></component-winner-result>
+</div>
+
+<template id="component-player-status">
+  <div class="card">
+    <div class="card-header">
+      <i
+        v-bind:class="player.isConnected ? 'fa fa-circle icon-text blinking text-success' : ' fas fa-circle icon-text text-danger'"></i>
+      ${player.name}
+      <span v-if="player.isMyTurn" class="blinking">${ player.name ? "is" : "" } Playing</span>
+    </div>
+    <div class="card-body player-steps-wrapper">
+      <span class="bg-warning player-step"> Start <img v-if="player.step == 0" v-bind:src="player.pawnSource"
+          class="player-pawn" /></span>
+      <span v-for="step in MAX_STEPS-1" class="player-step">
+        <img v-if="player.step == step" v-bind:src="player.pawnSource" class="player-pawn" />
+        <span v-if="player.step != step">${ step }</span>
+      </span>
+      <span class="bg-success player-step">Finish <img v-if="player.step == MAX_STEPS" v-bind:src="player.pawnSource"
+          class="player-pawn" /></span>
+    </div>
+  </div>
+</template>
+
+
+<template id="component-difficulty-selector">
+  <!-- Modal -->
+  <div class="modal fade" id="difficulty-selector-model" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="difficulty-selector-model-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="difficulty-selector-model-label">Your turn! Choose your difficulty</h5>
+        </div>
+        <div class="modal-body">
+          <div class="difficulty-box-wrapper">
+            <button type="button" v-for="n in MAX_DIFFICULTY"
+              v-bind:class="'difficulty-box level-' + n + ( selectedDifficulty == n ? ' selected': '' )"
+              v-on:click="eventSelectDifficulty(n)">
+              ${ n }
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="component-winner-result">
+  <!-- Modal -->
+  <div class="modal fade" id="winner-result-model" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="winner-result-model-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="winner-result-model-label">Player`s Rank</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row winner-result" v-for="(player, index) in players">
+            <div class="col-md-6 col-sm-12">
+              ${ index + 1}.
+              <img v-bind:src="player.pawnSource" class="player-pawn" />
+              <strong v-if="player.name"> ${ player.name }</strong>
+              <span v-if="player.id == currentPlayer.id"> (You)</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="/invitation" class="btn btn-success float-end">
+            <i class="fa fa-redo"></i> Create new game
+          </a>
+          <button type="button" class="btn btn-danger float-end">
+            <i class="fa fa-times"></i> Close window
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+{% endblock %}
+
+{% block bottom_js %}
+{{ parent() }}
+<script type="text/javascript">
+  const brokerHost = "{{ brokerHost }}";
+  const gameToken = "{{ gameToken }}";
+</script>
+<script src="//cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/game-play.js" type="text/javascript"></script>
+{% endblock %}
