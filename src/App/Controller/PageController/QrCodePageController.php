@@ -87,13 +87,12 @@ class QrCodePageController extends AbstractController
                     $mail->SMTPAuth   = true;                             //Enable SMTP authentication
                     $mail->SMTPSecure = 'tls';
                     $mail->Port       = 587;                              //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-                    $mail->Username   = 'mindracethegame@gmail.com';      //SMTP username
-                    $mail->Password   = 'Mindrace123*';                   //SMTP password
-            
+                    $mail->Username   = 'mindracethegame2@gmail.com';      //SMTP username
+                    $mail->Password   = '';
                     $mail->SMTPDebug = 0;                                 //Level of debug
             
                     //Recipients
-                    $mail->setFrom('mindracethegame@gmail.com', 'MindRace');
+                    $mail->setFrom('mindracethegame2@gmail.com', 'MindRace');
                     
                     switch ($btn) {
                         case 0:
